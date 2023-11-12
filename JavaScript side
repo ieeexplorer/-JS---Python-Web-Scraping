@@ -1,0 +1,15 @@
+// JavaScript - Fetch API Example
+fetch('https://example.com/data')
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    // Send the data to a Python server for processing
+    fetch('https://your-python-server.com/process', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: data })
+    });
+  })
+  .catch(error => console.error('Error:', error));
